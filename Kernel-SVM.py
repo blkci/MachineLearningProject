@@ -73,7 +73,7 @@ import time
 
 start_time = time.time()
 
-model = LinearRegression()
+model = SVC(kernel='linear')
 
 model.fit(X_Train, np.ravel(y_Train))
 
