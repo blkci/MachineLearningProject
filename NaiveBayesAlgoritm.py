@@ -73,7 +73,7 @@ import time
 
 start_time = time.time()
 
-model = SVC(kernel='linear')
+model = GaussianNB()
 
 model.fit(X_Train, np.ravel(y_Train))
 
