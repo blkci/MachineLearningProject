@@ -1,5 +1,4 @@
 
-
 from osgeo import gdal
 import numpy as np
 import pandas as pd
@@ -27,7 +26,6 @@ train_label_data.columns=['Code', 'Blue', 'Green', 'Red', 'NIR']
 train_label_data.to_csv('train.csv')
 
 np.save('train.npy', final_data)
-
 
 datasetTest = gdal.Open(r'C:\Users\muham\Downloads\Project-20230123T143514Z-001\Project/S2B_MSIL1C_20220528_Test.tif')
 
@@ -71,12 +69,11 @@ from sklearn import metrics
 from sklearn.linear_model import LinearRegression
 
 
-
 import time
 
 start_time = time.time()
 
-model = OneVsRestClassifier(SVC())
+model = LinearRegression()
 
 model.fit(X_Train, np.ravel(y_Train))
 
@@ -89,7 +86,6 @@ y_predictions = model.predict(X_Val)
 accuracy = metrics.accuracy_score(y_val, y_predictions)
 print(f'Accuracy: {accuracy:.2%}')
 
-# Compute the confusion matrix
 labels = ['Tree cover', 'Shrubland', 'Grassland', 'Cropland', 'Built-up', 'Bare/sparse vegetation', 'Snow and ice','Permanent water bodies', 'Herbaceous wetland']
 
 predictions = model.predict(dataTest1d)
